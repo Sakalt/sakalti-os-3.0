@@ -7,7 +7,21 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
+    <div id="bootScreen">
+    <div class="spinner"></div>
+    <p>Loading Sakalti OS 2.0...</p>
+    </div>
+
     <div id="desktop">
+        <div id="startMenu" class="start-menu">
+           <ul>
+            <li><button onclick="openApp('notepad')">Notepad</button></li>
+             <li><button onclick="openApp('weather')">Weather</button></li>
+             <li><button onclick="openApp('calculator')">Calculator</button></li>
+             <li><button onclick="openApp('dictionaryApp')">Dictionary</button></li>
+        <!-- さらに他のアプリを追加 -->
+          </ul>
+       </div>
         <div id="widgets">
             <button id="weather-widget" class="widget">天気</button>
             <button id="clock-widget" class="widget">時計</button>
