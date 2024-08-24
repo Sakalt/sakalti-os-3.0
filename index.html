@@ -3,69 +3,77 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sakalti OS</title>
+    <title>macOS Aquila</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <div id="desktop">
-        <div id="widgets">
-            <button id="weather-widget" class="widget">天気</button>
-            <button id="clock-widget" class="widget">時計</button>
-        </div>
         <div id="taskbar">
-            <div class="taskbar-item" onclick="openApp('notepad')">
-                <img src="i/notepad-icon.png" alt="Notepad">
+            <div class="taskbar-item" onclick="openApp('finder')">
+                <img src="icons/finder-icon.png" alt="Finder">
             </div>
-            <div class="taskbar-item" onclick="openApp('weather')">
-                <img src="i/weather-icon.png" alt="Weather">
+            <div class="taskbar-item" onclick="openApp('notepad')">
+                <img src="icons/notepad-icon.png" alt="Notepad">
             </div>
             <div class="taskbar-item" onclick="openApp('calculator')">
-                <img src="i/calculator-icon.png" alt="Calculator">
-            </div>
-            <div class="taskbar-item" onclick="openApp('gallery')">
-                <img src="i/gallery-icon.png" alt="Gallery">
-            </div>
-            <div class="taskbar-item" onclick="openApp('music')">
-                <img src="i/music-icon.png" alt="Music">
+                <img src="icons/calculator-icon.png" alt="Calculator">
             </div>
             <div class="taskbar-item" onclick="openApp('browser')">
-                <img src="i/browser-icon.png" alt="Browser">
+                <img src="icons/browser-icon.png" alt="Browser">
+            </div>
+            <div class="taskbar-item" onclick="openApp('weather')">
+                <img src="icons/weather-icon.png" alt="Weather">
+            </div>
+            <div class="taskbar-item" onclick="openApp('music')">
+                <img src="icons/music-icon.png" alt="Music">
+            </div>
+            <div class="taskbar-item" onclick="openApp('gallery')">
+                <img src="icons/gallery-icon.png" alt="Gallery">
             </div>
             <div class="taskbar-item" onclick="openApp('settings')">
-                <img src="i/settings-icon.png" alt="Settings">
+                <img src="icons/settings-icon.png" alt="Settings">
             </div>
         </div>
         <div id="apps">
-            <div id="notepad" class="app">
-                <textarea id="notepad-text" placeholder="メモを入力..."></textarea>
+            <div id="finder" class="app">
+                <h1>Finder</h1>
+                <p>ここにFinderの内容が表示されます。</p>
             </div>
-            <div id="weather" class="app">
-                <iframe id="weather-frame" src="https://wttr.in/?format=3"></iframe>
+            <div id="notepad" class="app">
+                <textarea placeholder="メモを入力..."></textarea>
             </div>
             <div id="calculator" class="app">
-                <input type="text" id="calc-display" readonly>
-                <div id="calc-buttons">
-                    <button onclick="calcInput('1')">1</button>
-                    <button onclick="calcInput('2')">2</button>
-                    <button onclick="calcInput('3')">3</button>
-                    <button onclick="calcInput('+')">+</button>
-                    <button onclick="calcInput('4')">4</button>
-                    <button onclick="calcInput('5')">5</button>
-                    <button onclick="calcInput('6')">6</button>
-                    <button onclick="calcInput('-')">-</button>
-                    <button onclick="calcInput('7')">7</button>
-                    <button onclick="calcInput('8')">8</button>
-                    <button onclick="calcInput('9')">9</button>
-                    <button onclick="calcInput('*')">*</button>
-                    <button onclick="calcInput('0')">0</button>
-                    <button onclick="calcClear()">C</button>
-                    <button onclick="calcCalculate()">=</button>
-                    <button onclick="calcInput('/')">/</button>
+                <div id="calc-header">
+                    <h2>Calculator</h2>
+                </div>
+                <div id="calc-body">
+                    <input type="text" id="calc-display" readonly>
+                    <div id="calc-buttons">
+                        <button onclick="calcInput('7')">7</button>
+                        <button onclick="calcInput('8')">8</button>
+                        <button onclick="calcInput('9')">9</button>
+                        <button onclick="calcInput('/')">/</button>
+                        <button onclick="calcInput('4')">4</button>
+                        <button onclick="calcInput('5')">5</button>
+                        <button onclick="calcInput('6')">6</button>
+                        <button onclick="calcInput('*')">*</button>
+                        <button onclick="calcInput('1')">1</button>
+                        <button onclick="calcInput('2')">2</button>
+                        <button onclick="calcInput('3')">3</button>
+                        <button onclick="calcInput('-')">-</button>
+                        <button onclick="calcInput('0')">0</button>
+                        <button onclick="calcInput('.')">.</button>
+                        <button onclick="calcClear()">C</button>
+                        <button onclick="calcInput('+')">+</button>
+                        <button id="calc-equal" onclick="calcCalculate()">=</button>
+                    </div>
                 </div>
             </div>
-            <div id="gallery" class="app">
-                <img id="gallery-img" src="gallery-image1.jpg" alt="Gallery Image">
-                <button onclick="nextImage()">次へ</button>
+            <div id="browser" class="app">
+                <iframe src="https://www.bing.com" id="browser-frame"></iframe>
+            </div>
+            <div id="weather" class="app">
+                <iframe src="https://wttr.in/?format=3"></iframe>
             </div>
             <div id="music" class="app">
                 <audio controls>
@@ -73,15 +81,13 @@
                     あなたのブラウザはオーディオ要素をサポートしていません。
                 </audio>
             </div>
-            <div id="browser" class="app">
-                <iframe src="https://www.bing.com" id="browser-frame"></iframe>
+            <div id="gallery" class="app">
+                <img id="gallery-img" src="gallery-image1.jpg" alt="Gallery Image">
+                <button onclick="nextImage()">次へ</button>
             </div>
             <div id="settings" class="app">
                 <p>設定パネル</p>
                 <button onclick="changeBackground()">背景を変更</button>
-            </div>
-            <div id="clock" class="app">
-                <div id="clock-display"></div>
             </div>
         </div>
     </div>
