@@ -1,18 +1,21 @@
-function openApp(appName) {
+let isDragging = false;
+
+// アプリを開く関数
+function openApp(appId) {
     const apps = document.querySelectorAll('.app');
     apps.forEach(app => app.style.display = 'none');
     document.getElementById('apps').style.display = 'block';
-    document.getElementById(appName).style.display = 'block';
+    document.getElementById(appId).style.display = 'block';
+    toggleStartMenu(); // スタートメニューを閉じる
 }
 
-document.getElementById('weather-widget').addEventListener('click', function() {
-    openApp('weather');
-});
+// スタートメニューのトグル機能
+function toggleStartMenu() {
+    const startMenu = document.getElementById('startMenu');
+    startMenu.style.display = startMenu.style.display === 'none' ? 'block' : 'none';
+}
 
-document.getElementById('clock-widget').addEventListener('click', function() {
-    openApp('clock');
-});
-
+// 計算機関数
 function calcInput(value) {
     document.getElementById('calc-display').value += value;
 }
@@ -30,6 +33,7 @@ function calcCalculate() {
     }
 }
 
+// ギャラリー画像変更関数
 let currentImageIndex = 1;
 function nextImage() {
     currentImageIndex++;
@@ -37,10 +41,12 @@ function nextImage() {
     document.getElementById('gallery-img').src = `gallery-image${currentImageIndex}.jpg`;
 }
 
+// 背景変更関数
 function changeBackground() {
     document.body.style.backgroundImage = "url('new-background.jpg')";
 }
 
+// 時計の更新関数
 function updateClock() {
     const now = new Date();
     const hours = String(now.getHours()).padStart(2, '0');
@@ -49,10 +55,11 @@ function updateClock() {
     document.getElementById('clock-display').textContent = `${hours}:${minutes}:${seconds}`;
 }
 
+// 定期的に時計を更新
 setInterval(updateClock, 1000);
 updateClock();
 
-// ドラッグ時にウィンドウとヘッダーが連動して移動するように調整
+// ウィンドウの操作を追加
 function addWindowControls(appId) {
     const app = document.getElementById(appId);
     const header = document.createElement('div');
@@ -147,19 +154,13 @@ function addWindowControls(appId) {
     addWindowControls(appId);
 });
 
-function toggleStartMenu() {
-    const startMenu = document.getElementById('startMenu');
-    startMenu.style.display = startMenu.style.display === 'none' ? 'block' : 'none';
-}
 
-// ダークモードの切り替え
-function toggleDarkMode() {
-    document.body.classList.toggle('dark-mode');
-}
 
-// ウィンドウを開く関数
-function openApp(appId) {
-    const app = document.getElementById(appId);
-    app.style.display = 'block';
-    toggleStartMenu(); // スタートメニューを閉じる
-}
+// ウィジェットのクリックでアプリを開く機能
+document.getElementById('weather-widget').addEventListener('click', function() {
+    openApp('weather');
+});
+
+document.getElementById('clock-widget').addEventListener('click', function() {
+    openApp('clock');
+});
